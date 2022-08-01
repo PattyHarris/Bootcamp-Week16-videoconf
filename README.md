@@ -16,3 +16,15 @@ crypto.randomUUID().split('-')[0]
 ## The Room
 
 1. Create the page for the URL '/room/<id>' (pages/room/[id].js).
+
+## Setup and Initialize Peer.js
+
+1. See Flavio's blog on Peer.js and WebRTC for more information.
+2. In 'room/[id].js', we're adding access via the 'script' tag and a bit of JSX to wait for 'onLoad' event - meaning the script has loaded. The next.js 'Script' tag allows for this access.
+3. Once the script is loaded, we'll have access to the 'Peer' object - e.g:
+
+```
+onLoad={() => {
+  console.log(Peer)
+}}
+```
