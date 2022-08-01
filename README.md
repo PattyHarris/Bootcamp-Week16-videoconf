@@ -28,3 +28,18 @@ onLoad={() => {
   console.log(Peer)
 }}
 ```
+
+## Access the Room ID
+
+1. Again, in '/pages/room/[id].js': to access the Room ID, we need to use the router.
+
+```
+import { useRouter } from 'next/router'
+
+export default function Room() {
+  const router = useRouter()
+  const { id } = router.query
+  ....
+```
+
+2. Add 'getServerSideProps' to indicate to Next.js that this is a server-generated page - this will allow access to the 'router.query' from the last step.
