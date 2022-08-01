@@ -12,3 +12,7 @@ Setup is as before. Here we only need to install next.js and tailwind to get the
 ```
 crypto.randomUUID().split('-')[0]
 ```
+
+## The Room
+
+1. Create the page for the URL '/room/<id>' (pages/room/[id].js).
