@@ -9,12 +9,31 @@ export default function Room() {
     <>
       <Script
         src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"
-        onLoad={() => {
-          console.log(Peer);
+        onLoad={async () => {
+          const peer = new Peer(`room-${id}-first`);
+
+          const localStream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true,
+          });
+
+          document.querySelector("video#local").srcObject = localStream;
+
+          peer.on("call", (call) => {
+            call.answer(localStream);
+
+            call.on("stream", (remoteStream) => {
+              document.querySelector("video#remote").srcObject = remoteStream;
+            });
+          });
         }}
       />
 
       <h1 className="mt-20 text-center text-3xl uppercase font-black">Room</h1>
+      <div className="flex">
+        <video id="local" autoPlay playsInline muted></video>
+        <video id="remote" autoPlay playsInline></video>
+      </div>
     </>
   );
 }
