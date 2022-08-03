@@ -44,7 +44,7 @@ export default function Room() {
 
 2. Add 'getServerSideProps' to indicate to Next.js that this is a server-generated page - this will allow access to the 'router.query' from the last step.
 
-## Handle the first user in the 'room'
+## Handle the First User in the 'Room'
 
 1. The design decision is to use 2 rooms - the first room is our room at 'pages/room/[id].js' - this will be the page for the caller. The second page is for the 'callee' as it were - this page will be at 'pages/room/[id]/join.js'.
 2. The code for handling the caller will reside in the '[id].js' code for handling 'onLoad'.
@@ -100,3 +100,11 @@ document.querySelector("video#local").srcObject = localStream;
 ```
 <video id='remote' autoPlay playsInline></video>
 ```
+
+## Create the Invite Link for the Second Person
+
+1.  We can't join the chat with the same URL - we'll need another local stream, but no connection to the other participant in the same 'room'.
+2.  Add JSX for 'share this link' to 'pages/room/[id].js'. The link is in really huge font so that it can be clicked and shared. This definitely needs improvement.
+3.  To handle the 'share this link', add 'pages/room/[id]/join.js' - I think this page was added previously, but with no content...??? Not sure when I did that!
+
+Not much here....
