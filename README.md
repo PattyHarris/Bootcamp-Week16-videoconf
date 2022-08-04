@@ -108,3 +108,23 @@ document.querySelector("video#local").srcObject = localStream;
 3.  To handle the 'share this link', add 'pages/room/[id]/join.js' - I think this page was added previously, but with no content...??? Not sure when I did that!
 
 Not much here....
+
+## Handle Person 2 Chat Room Access
+
+1. In 'pages/room/[id]/join.js', add access to the PeerJS script as we did with '[id].js'.
+2. Initialize the new peer instance as we did with '[id].js' - here the peer is identified as 'room-${id}-second'. As before, we need to make the page server side generated and return the props via 'getServerSideProps'.
+3. Initialize the local stream as we did with '[id].js'.
+4. Finally we call the 'room-${id}-first' user using 'peer.call()', receiving the 'call' object back.
+5. This doesn't really make sense (yet). To test, you need to separate browser's + cameras.
+
+## ngrok
+
+1. Installed via brew install ngrok/ngrok/ngrok
+2. Setup the token which is then stored at /Users/\***\*\*\*\*\*\*\***/Library/Application Support/ngrok/ngrok.yml - example auth token here:
+
+```
+ngrok config add-authtoken 2CrdYL4MQcJqZlQJbHa3hKFE5O0_2QXfwLU4E8adteXZpCTxR
+```
+
+This is too much trouble for this example. Uninstalled ngrok and moving right along...
+Finished.
